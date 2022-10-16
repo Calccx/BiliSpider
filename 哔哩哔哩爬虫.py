@@ -11,9 +11,7 @@ def getNames(uid):
     url='https://api.bilibili.com/x/relation/followings?vmid='+uid+'&pn=1'
     page_data=requests.get(url=url,headers=headers).text
     names='"mid":(.*?),".*?"uname":"(.*?)"'
-    
     names_data=re.findall(names,page_data,re.S)
-    
     follow_json=json.loads(page_data)
     total=follow_json['data']['total']
     if total>250:
